@@ -1,0 +1,27 @@
+{
+  "name": "eleventy-bloks",
+  "version": "1.0.0",
+  "description": "An opiniated eleventy starter using storyblok for content management.",
+  "keywords": [
+    "eleventy",
+    "11ty",
+    "starter",
+    "storybloks"
+  ],
+  "scripts": {
+    "dev": "npx @11ty/eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timonforrer/eleventy-bloks.git"
+  },
+  "author": "Timon Forrer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timonforrer/eleventy-bloks/issues"
+  },
+  "homepage": "https://github.com/timonforrer/eleventy-bloks#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.0-canary.38"
+  }
+}
