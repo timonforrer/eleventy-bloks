@@ -1,3 +1,6 @@
+//  options from .site.config.js
+const site_config = require('@site_config');
+
 // helper to filter all records and get the start page of the same parent folder
 function getStartpageByParentID(parent_id) {
   return function(element) {
@@ -13,23 +16,13 @@ module.exports = function(page_to_open, all_pages) {
     content
   } = page_to_open;
 
-  // add a prefix to english pages
-  // todo: move to main config
-  // https://airtable.com/tblivIzB2r25Uj5rA/viw3P1STrFCXN6Gb6/recEgn0nOCMfnL4kw
-  const prefix =
-    lang === 'en'
-    ? '/en'
-    : '';
-
-  const language_map = {
-    'default': 'de',
-    'en': 'en'
-  };
+  // adding prefixes to all other languages except for the default lang
+  const prefix = site_config.languages[lang].prefix;
 
   // if not a startpage, get custom_slug from the startpage of the same root
   const parent_slug =
     ! is_startpage
-    ? `/${all_pages[language_map[lang]].stories.filter(getStartpageByParentID(parent_id))[0].content.meta_tags[0].custom_slug}`
+    ? `/${all_pages[site_config.languages[lang].key].stories.filter(getStartpageByParentID(parent_id))[0].content.meta_tags[0].custom_slug}`
     : '';
 
   let { custom_slug } = content.meta_tags[0];
