@@ -1,1 +1,19 @@
 {{ title }} – {{ lang }}
+
+{% set content = pdata.content %}
+
+{# here go all toplevel bloks (not part of modular `body` blok) #}
+{% if content.tracks %}
+  {% include 'tracks.njk' %}
+{% endif %}
+
+{# looping over all modular bloks inside `body` #}
+{% for blok in content.body %}
+  {% switch blok.component %}
+    {% case 'rich_text' %}
+      {{ blok.body }}
+    {% case 'youtube_video' %}
+      {{ blok | log }}
+    {% default %}
+  {% endswitch %}
+{% endfor %}
