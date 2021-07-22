@@ -17,6 +17,9 @@ const options = {
   }
 }
 
+// todo: dynamically fetching all pages based on languages in .site.config.js
+// https://airtable.com/tblivIzB2r25Uj5rA/viw3P1STrFCXN6Gb6/recfkMpeCyW5Uq7BD
+
 // function for retrieving content
 async function fetchPages(prefix) {
   const url = `${baseURL}?starts_with=${prefix ?? ''}pages&token=${token}`;
