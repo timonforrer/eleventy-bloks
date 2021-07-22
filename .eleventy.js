@@ -1,3 +1,4 @@
+const path = require('path');
 const alias = require('module-alias');
 
 // custom options can be required via @site_config
