@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/timonforrer/eleventy-bloks#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.0-canary.38"
+    "@11ty/eleventy": "^1.0.0-canary.38",
+    "module-alias": "^2.2.2"
   },
   "dependencies": {
     "@11ty/eleventy-cache-assets": "^2.3.0"
