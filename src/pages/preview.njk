@@ -1,0 +1,15 @@
+{% set slug = eleventy.serverless.path._ %}
+
+{% set active_page = merged_pages[slug] %}
+
+<pre>
+{{ slug | dump(2) }}
+</pre>
+
+<pre>
+{{ active_page | dump(2) }}
+</pre>
+{# <pre>
+  {{ eleventy | dump(2) }}
+  {{ pages.de.stories | dump(2) }}
+</pre> #}

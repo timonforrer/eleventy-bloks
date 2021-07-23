@@ -1,9 +1,8 @@
 // helper to resolve links
-const resolveLink = require('../helpers/linkResolver.js');
-const filterWebcomponents = require('../helpers/getWebcomponents.js');
+const resolveLink = require('../../helpers/linkResolver.js');
+const filterWebcomponents = require('../../helpers/getWebcomponents.js');
 
 module.exports = {
-  layout: "base.njk",
   eleventyComputed: {
     permalink: data => {
       const {
@@ -13,7 +12,7 @@ module.exports = {
 
       // apparantly, this also gets called when data not ready
       if (Object.keys(all_pages).length > 0)  {
-        return resolveLink(page_to_open, all_pages);
+        return resolveLink(page_to_open, all_pages)
       } else {
         return
       }
