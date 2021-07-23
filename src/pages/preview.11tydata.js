@@ -3,7 +3,7 @@
 
 module.exports = {
   permalink: {
-    dynamic: '/preview/*/'
+    dynamic: '/preview/*'
   },
   eleventyComputed: {
     merged_pages: data => {
