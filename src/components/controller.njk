@@ -11,9 +11,9 @@
 {% for blok in content.body %}
   {% switch blok.component %}
     {% case 'rich_text' %}
-      {{ blok.body }}
+      {# {{ blok.body | log }} #}
     {% case 'youtube_video' %}
-      {{ blok | log }}
+      {# {{ blok | log }} #}
     {% default %}
   {% endswitch %}
 {% endfor %}
