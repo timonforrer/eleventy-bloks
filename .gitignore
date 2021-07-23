@@ -4,3 +4,5 @@ node_modules
 dist
 package-lock.json
 .cache
+netlify/functions/dynamic/**
+!netlify/functions/dynamic/index.js
