@@ -10,8 +10,8 @@ const token =
 
 const options = {
   // if in preview environment, set cache duration to 5s to always get fresh data, else, cache for 1 day
-  duration: process.env.ELEVENTY_SERVERLESS ? '5s' : '1d',
-  directory: process.env.ELEVENTY_SERVERLESS ? 'tmp' : '.cache',
+  duration: process.env.ELEVENTY_SERVERLESS ? '*' : '1d',
+  directory: process.env.ELEVENTY_SERVERLESS ? 'cache' : '.cache',
   type: 'json',
   fetchOptions: {
     headers: {

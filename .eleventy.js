@@ -23,7 +23,7 @@ module.exports = function(config) {
     inputDir: './src/',
     functionsDir: './netlify/functions',
     copy: [
-      { from: '.cache', to: 'tmp' },
+      { from: '.cache', to: 'cache' },
       './site.config.js',
       './src/helpers/',
       './src/pages/'
