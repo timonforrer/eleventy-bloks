@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/timonforrer/eleventy-bloks#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.0-canary.38",
+    "@11ty/eleventy": "^1.0.0-canary.39",
     "@spartan-components/base-styles": "^0.0.2",
     "@spartan-components/sp-music-player": "^0.0.2",
     "@spartan-components/sp-video": "^0.0.8",
