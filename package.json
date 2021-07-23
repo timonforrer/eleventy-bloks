@@ -27,7 +27,8 @@
     "@spartan-components/base-styles": "^0.0.2",
     "@spartan-components/sp-music-player": "^0.0.2",
     "@spartan-components/sp-video": "^0.0.8",
-    "module-alias": "^2.2.2"
+    "module-alias": "^2.2.2",
+    "node-fetch": "^2.6.1"
   },
   "dependencies": {
     "@11ty/eleventy-cache-assets": "^2.3.0"

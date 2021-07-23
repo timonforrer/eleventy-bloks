@@ -1,5 +1,6 @@
 // plugin for caching network request (makes reloads during development more performant and reduces api requests)
 const Cache = require('@11ty/eleventy-cache-assets');
+const fetch = require('node-fetch');
 
 const baseURL = 'https://api.storyblok.com/v2/cdn/stories';
 // the preview site is a seperate netlify site with NODE_ENV=preview set
@@ -8,10 +9,10 @@ const token =
   ? `${process.env.storyblok_preview}&version=draft`
   : process.env.storyblok_public;
 
-const options = {
+const cached_options = {
   // if in preview environment, set cache duration to 5s to always get fresh data, else, cache for 1 day
-  duration: process.env.ELEVENTY_SERVERLESS ? '*' : '1d',
-  directory: process.env.ELEVENTY_SERVERLESS ? 'cache' : '.cache',
+  duration: '1d',
+  directory: '.cache',
   type: 'json',
   fetchOptions: {
     headers: {
@@ -25,13 +26,25 @@ const options = {
 // https://airtable.com/tblivIzB2r25Uj5rA/viw3P1STrFCXN6Gb6/recfkMpeCyW5Uq7BD
 
 // function for retrieving content
+async function fetchCachedPages(prefix) {
+  const url = `${baseURL}?starts_with=${prefix}pages&token=${token}`;
+  return Cache(url, cached_options);
+}
+
 async function fetchPages(prefix) {
   const url = `${baseURL}?starts_with=${prefix}pages&token=${token}`;
-  return Cache(url, options);
+  const response = await fetch(url);
+  return response.json();
 }
 
 module.exports = async function() {
-  let de = await fetchPages('');
-  let en = await fetchPages('en/');
-  return { de, en };
+  if (process.env.ELEVENTY_SERVERLESS) {
+    let de = await fetchPages('');
+    let en = await fetchPages('en/');
+    return { en, de }
+  } else {
+    let de = await fetchCachedPages('');
+    let en = await fetchCachedPages('en/');
+    return { de, en };
+  }
 };
