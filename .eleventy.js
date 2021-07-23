@@ -5,7 +5,7 @@ const { EleventyServerlessBundlerPlugin } = require('@11ty/eleventy')
 // custom options can be required via @site_config
 // inspired by twelvety
 // https://github.com/gregives/Twelvety
-alias.addAlias('@site_config', path.join(__dirname, '.site.config.js'));
+alias.addAlias('@site_config', path.join(__dirname, 'site.config.js'));
 
 // requiring options from @siteConfig
 const site_config = require('@site_config');
@@ -24,7 +24,7 @@ module.exports = function(config) {
     functionsDir: './netlify/functions',
     copy: [
       { from: '.cache', to: 'cache' },
-      './.site.config.js',
+      './site.config.js',
       './src/helpers/',
       './src/pages/'
     ]
