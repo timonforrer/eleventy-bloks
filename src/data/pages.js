@@ -26,12 +26,12 @@ const options = {
 
 // function for retrieving content
 async function fetchPages(prefix) {
-  const url = `${baseURL}?starts_with=${prefix ?? ''}pages&token=${token}`;
+  const url = `${baseURL}?starts_with=${prefix}pages&token=${token}`;
   return Cache(url, options);
 }
 
 module.exports = async function() {
-  let de = await fetchPages();
+  let de = await fetchPages('');
   let en = await fetchPages('en/');
   return { de, en };
 };
