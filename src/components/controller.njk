@@ -2,6 +2,8 @@
 
 {% set content = pdata.content %}
 
+{{ pdata.content._editable | safe }}
+
 {# here go all toplevel bloks (not part of modular `body` blok) #}
 {% if content.tracks %}
   {% set tracks = content.tracks %}
