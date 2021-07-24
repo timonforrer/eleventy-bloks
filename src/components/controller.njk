@@ -3,7 +3,7 @@
 {% set content = pdata.content %}
 
 {# here go all toplevel bloks (not part of modular `body` blok) #}
-{% if content.tracks %
+{% if content.tracks %}
   {% set tracks = content.tracks %}
   {% include 'tracks.njk' %}
 {% endif %}
