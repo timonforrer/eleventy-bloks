@@ -11,7 +11,7 @@
 {% for blok in content.body %}
   {% switch blok.component %}
     {% case 'rich_text' %}
-      {# {{ blok.body | log }} #}
+      {{ blok.body | renderRichText | safe }}
     {% case 'youtube_video' %}
       {# {{ blok | log }} #}
     {% default %}
