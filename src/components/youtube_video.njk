@@ -1,32 +1,34 @@
 {% set video_id = youtube_video.url.url | getYoutubeID %}
 
 {{ youtube_video._editable | safe }}
-<sp-video
-  provider="youtube-nocookie"
-  video-id="{{ video_id }}"
->
-  <img src="{{ 'https://img.youtube.com/vi/' + video_id + '/maxresdefault.jpg' }}" alt="">
-  <button
-    slot="controller"
-    class="button uppercase hidden-when-undefined"
+<section>
+  <sp-video
+    provider="youtube-nocookie"
+    video-id="{{ video_id }}"
   >
-    {% if lang === 'de' %}
-      Video abspielen
-    {% else %}
-      Play video
-    {% endif %}
-  </button>
-  <!-- Fallback for browsers that don't support custom elements, has to use class="fallback-link" -->
-  <a
-    href="https://www.youtube.com/watch?v={{ video_id }}"
-    class="fallback-link"
-    target="blank"
-    rel="noopener noreferrer"
-  >
-    {% if lang === 'de' %}
-      Video in neuem Tab öffnen
-    {% else %}
-      Open video in new Tab
-    {% endif %}
-  </a>
-</sp-video>
+    <img src="{{ 'https://img.youtube.com/vi/' + video_id + '/maxresdefault.jpg' }}" alt="">
+    <button
+      slot="controller"
+      class="button uppercase hidden-when-undefined"
+    >
+      {% if lang === 'de' %}
+        Video abspielen
+      {% else %}
+        Play video
+      {% endif %}
+    </button>
+    <!-- Fallback for browsers that don't support custom elements, has to use class="fallback-link" -->
+    <a
+      href="https://www.youtube.com/watch?v={{ video_id }}"
+      class="fallback-link"
+      target="blank"
+      rel="noopener noreferrer"
+    >
+      {% if lang === 'de' %}
+        Video in neuem Tab öffnen
+      {% else %}
+        Open video in new Tab
+      {% endif %}
+    </a>
+  </sp-video>
+</section>

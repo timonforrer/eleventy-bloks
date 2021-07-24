@@ -1,7 +1,9 @@
-<p>there are tracks:</p>
-<ul>
-  {% for item in tracks %}
-    {{ item._editable | safe }}
-    <li>{{ item.title }}</li>  
-  {% endfor %}
+<section>
+  <p>there are tracks:</p>
+  <ul>
+    {% for item in tracks %}
+      {{ item._editable | safe }}
+      <li>{{ item.title }}</li>  
+    {% endfor %}
+  </section>
 </ul>

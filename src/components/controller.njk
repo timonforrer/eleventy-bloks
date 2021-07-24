@@ -2,10 +2,8 @@
 
 {% set content = pdata.content %}
 
-{{ pdata.content._editable | safe }}
-
 {# here go all toplevel bloks (not part of modular `body` blok) #}
-{% if content.tracks %}
+{% if content.tracks %
   {% set tracks = content.tracks %}
   {% include 'tracks.njk' %}
 {% endif %}
@@ -15,7 +13,7 @@
   {% set type = blok.component %}
   {% if type === 'rich_text' %}
     {{ blok._editable | safe }}
-    {{ blok.body | renderRichText | safe }}
+    <section>{{ blok.body | renderRichText | safe }}</section>
   {% elseif type === 'youtube_video' %}
     {% set youtube_video = blok %}
     {% include 'youtube_video.njk' %}
