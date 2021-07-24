@@ -4,16 +4,18 @@
 
 {# here go all toplevel bloks (not part of modular `body` blok) #}
 {% if content.tracks %}
+  {% set tracks = content.tracks %}
   {% include 'tracks.njk' %}
 {% endif %}
 
 {# looping over all modular bloks inside `body` #}
 {% for blok in content.body %}
-  {% switch blok.component %}
-    {% case 'rich_text' %}
-      {{ blok.body | renderRichText | safe }}
-    {% case 'youtube_video' %}
-      {# {{ blok | log }} #}
-    {% default %}
-  {% endswitch %}
+  {% set type = blok.component %}
+  {% if type === 'rich_text' %}
+    {{ blok._editable | safe }}
+    {{ blok.body | renderRichText | safe }}
+  {% elseif type === 'youtube_video' %}
+    {% set youtube_video = blok %}
+    {% include 'youtube_video.njk' %}
+  {% endif %}
 {% endfor %}
