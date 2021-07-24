@@ -5,6 +5,7 @@ module.exports = {
   permalink: {
     dynamic: '/preview/*'
   },
+  preview: true,
   eleventyComputed: {
     merged_pages: data => {
       // declare dependencies
