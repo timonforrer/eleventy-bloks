@@ -23,7 +23,7 @@
 {% if preview %}
   <script>
   // Initialize the Storyblok JS Bridge
-  const { StoryblokBridge, location } = window
+  const { StoryblokBridge } = window
   const storyblokInstance = new StoryblokBridge()
   
   storyblokInstance.on(['published', 'change'], () => {
