@@ -2,9 +2,9 @@
 const site_config = require('@site_config');
 
 // helper to filter all records and get the start page of the same parent folder
-function getStartpageByParentID(parent_id) {
+function getStartpageByParentID(parent_id, lang) {
   return function(element) {
-    return element.parent_id === parent_id && element.is_startpage;
+    return element.parent_id === parent_id && element.is_startpage && element.lang === lang;
   };
 }
 
@@ -16,13 +16,15 @@ module.exports = function(page_to_open, all_pages) {
     content
   } = page_to_open;
 
+  const all_pages_array = Object.values(all_pages);
+
   // adding prefixes to all other languages except for the default lang
-  const prefix = site_config.languages[lang].prefix;
+  const prefix = site_config.languages[lang].urlPrefix
 
   // if not a startpage, get custom_slug from the startpage of the same root
   const parent_slug =
     ! is_startpage
-    ? `/${all_pages[site_config.languages[lang].key].stories.filter(getStartpageByParentID(parent_id))[0].content.meta_tags[0].custom_slug}`
+    ? `/${all_pages_array.filter(getStartpageByParentID(parent_id, lang))[0].content.meta_tags[0].custom_slug}`
     : '';
 
   let { custom_slug } = content.meta_tags[0];

@@ -19,11 +19,13 @@ module.exports = {
   languages: {
     default: {
       key: 'de',
-      prefix: ''
+      urlPrefix: '',
+      fetchPrefix: ''
     },
     en: {
       key: 'en',
-      prefix: '/en'
+      urlPrefix: '/en',
+      fetchPrefix: 'en/'
     }
   },
 

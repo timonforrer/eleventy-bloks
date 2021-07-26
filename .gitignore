@@ -6,3 +6,5 @@ package-lock.json
 .cache
 netlify/functions/dynamic/**
 !netlify/functions/dynamic/index.js
+_archive
+.DS_Store
