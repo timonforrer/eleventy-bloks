@@ -17,7 +17,10 @@ module.exports = async function() {
   for (page in obj_all_pages) {
     const page_data = obj_all_pages[page];
     const real_path = resolveLink(page_data, obj_all_pages);
-    localised_routes[page_data.lang_key][page] = real_path;
+    localised_routes[page_data.lang_key][page] = {
+      id: page_data.id,
+      path: real_path
+    };
   }
 
   return localised_routes
