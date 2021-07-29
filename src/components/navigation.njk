@@ -1,0 +1,7 @@
+<nav>
+  <ul>
+    {% for item in navigation[lang] %}
+      <li><a href="{{ item.full_story | resolveLink(pages) }}">{{ item.title }}</a></li>
+    {% endfor %}
+  </ul>
+</nav>
