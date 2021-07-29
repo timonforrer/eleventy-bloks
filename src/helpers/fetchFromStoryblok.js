@@ -21,7 +21,7 @@ module.exports = async function(query) {
     ? `${process.env.storyblok_preview}&version=draft`
     : process.env.storyblok_public;
 
-  const url = `${baseURL}?resolve_links=story&starts_with=${query}&token=${token}`;
+  const url = `${baseURL}?starts_with=${query}&token=${token}`;
 
   // if in serverless environment, use fresh data, otherwise get cached results
   if (process.env.ELEVENTY_SERVERLESS) {
