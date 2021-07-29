@@ -8,6 +8,12 @@ function getStartpageByParentID(parent_id, lang) {
   };
 }
 
+/**
+ * 
+ * @param {object} page_to_open The entire object of the page to open
+ * @param {array} all_pages All pages of the site
+ * @returns 
+ */
 module.exports = function(page_to_open, all_pages) {
   const {
     lang,
@@ -36,5 +42,8 @@ module.exports = function(page_to_open, all_pages) {
     ? `/${custom_slug}`
     : '';
 
-  return `${prefix}${parent_slug}${custom_slug}/index.html`;
+  let entire_path = `${prefix}${parent_slug}${custom_slug}/index.html`;
+  let clean_path = entire_path.replace(/(https?:\/\/)|(\/)+/g, "$1$2");
+
+  return clean_path;
 }
