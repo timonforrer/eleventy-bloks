@@ -1,0 +1,15 @@
+<ul>
+  {% for key, lang in languages %}
+    <li>
+      {% if lang.key === pdata.lang_key %}
+        <a href="#" aria-current="page">{{ lang.key | upper }}</a>
+      {% else %}
+        {% for key, page in pages %}
+          {% if (pdata.id === page.id) and (page.lang_key === lang.key) %}
+            <a href="{{ routes[page.lang_key][page.full_slug].path }}">{{ lang.key | upper }}</a>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
