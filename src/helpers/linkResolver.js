@@ -42,7 +42,7 @@ module.exports = function(page_to_open, all_pages) {
     ? `/${custom_slug}`
     : '';
 
-  let entire_path = `${prefix}${parent_slug}${custom_slug}/index.html`;
+  let entire_path = `${prefix}${parent_slug}${custom_slug}/`;
   let clean_path = entire_path.replace(/(https?:\/\/)|(\/)+/g, "$1$2");
 
   return clean_path;
