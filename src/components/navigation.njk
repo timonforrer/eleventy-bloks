@@ -1,7 +1,12 @@
 <nav>
   <ul>
     {% for item in navigation[lang] %}
-      <li><a href="{{ routes[lang][item.url.cached_url] }}">{{ item.title }}</a></li>
+      {% if (item.url.cached_url | first) === '/' %}
+        {% set url = item.url.cached_url.slice(1) %}
+      {% else %}
+        {% set url = item.url.cached_url %}
+      {% endif %}
+      <li><a href="{{ routes[lang][url].path }}">{{ item.title }}</a></li>
     {% endfor %}
   </ul>
 </nav>
