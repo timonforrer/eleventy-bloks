@@ -2,7 +2,7 @@ const { readdirSync } = require('fs');
 // const dir = process.env.ELEVENTY_SERVERLESS
 //   ? readdirSync('.netlify/functions/dynamic/src/assets/bundled')
 //   : readdirSync('./src/assets/bundled');
-console.log(readdirSync('.'));
+console.log(readdirSync('./src/assets'));
 
 const dir = readdirSync('./src/assets/bundled');
 
