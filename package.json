@@ -9,7 +9,7 @@
     "storybloks"
   ],
   "scripts": {
-    "clean": "rimraf dist ./src/assets/bundled",
+    "clean": "rimraf ./dist ./src/assets/bundled ./src/netlify/functions/dynamic",
     "js": "rollup -c",
     "dev:eleventy": "npx @11ty/eleventy --serve",
     "build:eleventy": "npx @11ty/eleventy",
