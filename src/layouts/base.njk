@@ -12,7 +12,7 @@
 
   <main>{{ content | safe }}</main>
 
-  {% if webcomponents %}
+  {% if (webcomponents.length > 0) %}
   {#
     Lazy loading webcomponents, following lamplightdev.com post
     https://lamplightdev.com/blog/2020/03/20/lazy-loading-web-components-with-intersection-observer/
