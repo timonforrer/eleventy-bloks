@@ -15,6 +15,11 @@ const addFilters = require('./src/helpers/filters');
 
 module.exports = function(config) {
 
+  // copy over compiled js and css
+  config.addPassthroughCopy('./src/assets')
+  config.addWatchTarget('./src/asset')
+  
+
   // hooking up our filters to the config
   addFilters(config);
 
