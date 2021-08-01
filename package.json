@@ -12,7 +12,7 @@
     "dev:js": "rollup -c",
     "dev:eleventy": "npx @11ty/eleventy --serve",
     "build:js": "rollup -c",
-    "build:eleventy": "npx @11ty/elevent",
+    "build:eleventy": "npx @11ty/eleventy",
     "dev": "run-p dev:js dev:eleventy",
     "build": "run-p build:js build:eleventy"
   },
