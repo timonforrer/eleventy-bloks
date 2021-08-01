@@ -13,8 +13,8 @@
     "js": "rollup -c",
     "dev:eleventy": "npx @11ty/eleventy --serve",
     "build:eleventy": "npx @11ty/eleventy",
-    "dev": "run-p clean js dev:eleventy",
-    "build": "run-p clean js build:eleventy"
+    "dev": "run-s clean js dev:eleventy",
+    "build": "run-s clean js build:eleventy"
   },
   "repository": {
     "type": "git",
