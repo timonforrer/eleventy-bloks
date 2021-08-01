@@ -6,4 +6,4 @@ console.log(readdirSync('./src/assets/bundled'));
 
 const dir = readdirSync('./src/assets/bundled');
 
-module.exports = dir[0].replace(/\./g, '-');
+module.exports = dir[0];
