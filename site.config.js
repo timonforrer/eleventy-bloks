@@ -1,7 +1,7 @@
 const webcomponents_paths = {
   // specify the path of the file, where each webcomponent gets defined (using `customElements.define`)
   'sp-music-player': '@spartan-components/sp-music-player/sp-music-player.js',
-  'sp-video': '@spartan-components/sp-video-player/sp-video.js'
+  'sp-video': '@spartan-components/sp-video/sp-video.js'
 }
 
 module.exports = {
