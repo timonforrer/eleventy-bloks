@@ -3,10 +3,11 @@
 {{ youtube_video._editable | safe }}
 <section>
   <sp-video
+    class="dynamic-element"
     provider="youtube-nocookie"
     video-id="{{ video_id }}"
   >
-    <img src="{{ 'https://img.youtube.com/vi/' + video_id + '/maxresdefault.jpg' }}" alt="">
+    <img slot="thumbnail" src="{{ 'https://img.youtube.com/vi/' + video_id + '/maxresdefault.jpg' }}" alt="">
     <button
       slot="controller"
       class="button uppercase hidden-when-undefined"

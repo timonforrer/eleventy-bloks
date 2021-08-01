@@ -1,9 +1,14 @@
 <section>
   <p>there are tracks:</p>
-  <ul>
-    {% for item in tracks %}
-      {{ item._editable | safe }}
-      <li>{{ item.title }}</li>  
-    {% endfor %}
-  </ul>
+  <sp-music-player class="dynamic-element" style="--primary-color:black;--secondary-color:white">
+    <ol>
+      {% for item in tracks %}
+      <li>
+        {{ item._editable | safe }}
+        <p>{{ item.title }}</p>
+        <audio controls src="{{ item.preview.filename }}"></audio>
+      </li>
+      {% endfor %}
+    </ol>
+  </sp-music-player>
 </section>
