@@ -10,7 +10,7 @@ webcomponents = Object.values(webcomponents);
 export default {
   input: webcomponents,
   output: {
-    dir: `src/assets/${version}/js`,
+    dir: `src/assets/bundled/${version}/js`,
     format: 'es'
   },
   plugins: [nodeResolve()]

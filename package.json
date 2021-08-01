@@ -9,12 +9,12 @@
     "storybloks"
   ],
   "scripts": {
-    "dev:js": "rollup -c",
+    "clean": "rimraf dist ./src/assets/bundled",
+    "js": "rollup -c",
     "dev:eleventy": "npx @11ty/eleventy --serve",
-    "build:js": "rollup -c",
     "build:eleventy": "npx @11ty/eleventy",
-    "dev": "run-p dev:js dev:eleventy",
-    "build": "run-p build:js build:eleventy"
+    "dev": "run-p clean js dev:eleventy",
+    "build": "run-p clean js build:eleventy"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
     "module-alias": "^2.2.2",
     "node-fetch": "^2.6.1",
     "npm-run-all": "^4.1.5",
+    "rimraf": "^2.7.1",
     "rollup": "^2.55.1",
     "rollup-plugin-node-resolve": "^5.2.0",
     "storyblok-js-client": "^4.1.3",
