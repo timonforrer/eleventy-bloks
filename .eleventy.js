@@ -31,7 +31,8 @@ module.exports = function(config) {
       { from: '.cache', to: 'cache' },
       './site.config.js',
       './src/helpers/',
-      './src/pages/'
+      './src/pages/',
+      './src/assets/'
     ]
   })
   return {
