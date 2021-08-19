@@ -1,9 +1,7 @@
 const { readdirSync } = require('fs');
-// const dir = process.env.ELEVENTY_SERVERLESS
-//   ? readdirSync('.netlify/functions/dynamic/src/assets/bundled')
-//   : readdirSync('./src/assets/bundled');
-console.log(readdirSync('./src/assets/bundled'));
 
+// cannot access package.json inside serverless function
+// getting directory name using fs package
 const dir = readdirSync('./src/assets/bundled');
 
 module.exports = dir[0];
