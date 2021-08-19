@@ -1,6 +1,6 @@
 const path = require('path');
 const alias = require('module-alias');
-const { EleventyServerlessBundlerPlugin } = require('@11ty/eleventy')
+const { EleventyServerlessBundlerPlugin } = require('@11ty/eleventy');
 
 // custom options can be required via @site_config
 // inspired by twelvety
@@ -13,18 +13,24 @@ const site_config = require('@site_config');
 // getting all filters from single index.js file inside `helpers/filter` folder
 const addFilters = require('./src/helpers/filters');
 
+// wire up scss processing
+const addStyleProcessor = require('./src/helpers/styles.js');
+
 module.exports = function(config) {
 
   // copy over compiled js and css
-  config.addPassthroughCopy({
-    './src/assets/bundled': 'assets'
-  })
-  config.addWatchTarget('./src/asset/bundled')
-  
+  config.addPassthroughCopy({'./src/assets/bundled': 'assets'})
+
+  config.addWatchTarget('./src/asset/bundled');
+  config.addWatchTarget('./src/styles');
 
   // hooking up our filters to the config
   addFilters(config);
 
+  // same for styles
+  addStyleProcessor(config);
+
+  // config for serverless plugin, used for previews
   config.addPlugin(EleventyServerlessBundlerPlugin, {
     name: 'dynamic',
     inputDir: './src/',
@@ -36,9 +42,9 @@ module.exports = function(config) {
       './src/pages/',
       './src/assets/'
     ]
-  })
+  });
+
   return {
-    // if you want to use other templating languages other than liquid, add them to the array.
     templateFormats: ['njk'],
     dir: site_config.dir
   }
