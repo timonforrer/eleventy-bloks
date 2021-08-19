@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% if title %}{{ title }}{% else %}{{ ('no title specified for ' + page.inputPath ) | log }}{% endif %}</title>
+  <link rel="stylesheet" href="/assets/{{ version }}/css/main.css">
 </head>
 <body>
   {% include 'header.njk' %}
@@ -12,49 +13,50 @@
 
   <main>{{ content | safe }}</main>
 
-  {% if (webcomponents.length > 0) %}
   {#
     Lazy loading webcomponents, following lamplightdev.com post
     https://lamplightdev.com/blog/2020/03/20/lazy-loading-web-components-with-intersection-observer/
   #}
-  <script>
-  // keep a record of the components we've loaded in this way
-  const imported = {};
-  // Set up our observer:
-  let observer = new IntersectionObserver((entries, observerRef) => {
-    // The callback is run when the visibility of one or more of the elements
-    // being observed has changed. It's also called on page load.
-    entries.forEach(async (entry) => {
-      //`isIntersecting` will be `true` if any part of the element is currently visible
-      if (entry.isIntersecting) {
-        // We are assuming here that your Web Component is located in a file
-        // named after it's tag name
-        const name = entry.target.nodeName.toLowerCase();
+  {% if (webcomponents.length > 0) %}
+    <script>
+    // keep a record of the components we've loaded in this way
+    const imported = {};
+    // Set up our observer:
+    let observer = new IntersectionObserver((entries, observerRef) => {
+      // The callback is run when the visibility of one or more of the elements
+      // being observed has changed. It's also called on page load.
+      entries.forEach(async (entry) => {
+        //`isIntersecting` will be `true` if any part of the element is currently visible
+        if (entry.isIntersecting) {
+          // We are assuming here that your Web Component is located in a file
+          // named after it's tag name
+          const name = entry.target.nodeName.toLowerCase();
 
-        // Once we've observed this element come into view, we can safely remove
-        // the observer since we won't need to import the WC code again
-        observerRef.unobserve(entry.target);
+          // Once we've observed this element come into view, we can safely remove
+          // the observer since we won't need to import the WC code again
+          observerRef.unobserve(entry.target);
 
-        if (!imported[name]) {
-          // Keep a note of which WCs have been loaded so if we have multiple
-          // instances we don't import twice
-          imported[name] = true;
+          if (!imported[name]) {
+            // Keep a note of which WCs have been loaded so if we have multiple
+            // instances we don't import twice
+            imported[name] = true;
 
-          // Let's load the WC code
-          import(`/assets/{{ version }}/js/${name}.js`);
+            // Let's load the WC code
+            import(`/assets/{{ version }}/js/${name}.js`);
+          }
         }
-      }
+      });
     });
-  });
 
-  // Observe all components with the desired class
-  const els = document.querySelectorAll('.dynamic-element');
-  els.forEach((el) => {
-    observer.observe(el);
-  });
-  </script>
+    // Observe all components with the desired class
+    const els = document.querySelectorAll('.dynamic-element');
+    els.forEach((el) => {
+      observer.observe(el);
+    });
+    </script>
   {% endif %}
 
+  {# load storyblok js, if in preview mode #}
   {% if preview %}
     <script src="//app.storyblok.com/f/storyblok-v2-latest.js" type="text/javascript"></script>
     <script>
