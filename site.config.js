@@ -38,8 +38,7 @@ module.exports = {
   // use the storyblock technical name as key, followed by the path of the webcomponent in question
   webcomponents: {
     youtube_video: webcomponents_paths['sp-video'],
-    tracks: webcomponents_paths['sp-music-player'],
-    storage: webcomponents_paths['app-localstorage-document']
+    tracks: webcomponents_paths['sp-music-player']
   },
   
   // return the package version for cache busting of assets
