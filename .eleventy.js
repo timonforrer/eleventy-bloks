@@ -41,6 +41,7 @@ module.exports = function(config) {
       './src/helpers/',
       './src/pages/',
       './src/assets/',
+      './src/styles/',
       './package.json'
     ]
   });
