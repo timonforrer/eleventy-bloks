@@ -35,8 +35,10 @@ module.exports = function(config) {
       });
   }
 
-  // run before first build
-  config.on('beforeBuild', () => processCss());
-  // and before every watch
-  config.on('beforeWatch', () => processCss());
+  // check if not in inside serverless function
+  if (!process.env.ELEVENTY_SERVERLESS) {
+    // run before first build
+    config.on('beforeBuild', () => processCss());
+    // and before every watch
+    config.on('beforeWatch', () => processCss())};
 }
