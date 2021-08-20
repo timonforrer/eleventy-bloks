@@ -40,7 +40,8 @@ module.exports = function(config) {
       './site.config.js',
       './src/helpers/',
       './src/pages/',
-      './src/assets/'
+      './src/assets/',
+      './package.json'
     ]
   });
 
