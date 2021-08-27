@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="{% if lang %}{{ lang }}{% else %}{{ ('no lang specified for ' + page.inputPath) | log }}{% endif %}">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if title %}{{ title }}{% else %}{{ ('no title specified for ' + page.inputPath ) | log }}{% endif %}</title>
-  <link rel="stylesheet" href="/assets/{{ version }}/css/main.css">
-</head>
+{% include 'head.njk' %}
 <body>
   {% include 'header.njk' %}
   {% include 'navigation.njk' %}
