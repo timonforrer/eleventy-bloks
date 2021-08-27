@@ -11,8 +11,10 @@ const fetch = require('node-fetch');
  * @param {string} query Language Code + type of content, eg. `en/pages` or `nav`
  * @returns {json}
  */
-module.exports = async function(query) {
-  const baseURL = 'https://api.storyblok.com/v2/cdn/stories';
+module.exports = async function(query, getSpace) {
+  const baseURL = !getSpace
+  ? 'https://api.storyblok.com/v2/cdn/stories'
+  : 'https://api.storyblok.com/v2/cdn/spaces/me';
 
   // if in serverless environment, use the preview token and set version=draft to get
   // unpublished stories
