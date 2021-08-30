@@ -9,3 +9,4 @@ netlify/functions/dynamic/**
 _archive
 .DS_Store
 src/assets/bundled
+src/assets/unbundled/**/*.html
