@@ -13,22 +13,23 @@ const site_config = require('@site_config');
 // getting all filters from single index.js file inside `helpers/filter` folder
 const addFilters = require('./src/helpers/filters');
 
-// wire up scss processing
-const addStyleProcessor = require('./src/helpers/styles.js');
+// getting build hooks e.g. for asset processing (css/social images)
+const addBuildHook = require('./src/helpers/buildHook.js');
 
 module.exports = function(config) {
 
   // copy over compiled js and css
   config.addPassthroughCopy({'./src/assets/bundled': 'assets'})
 
+  // watch these files for changes and rebuild site on change
   config.addWatchTarget('./src/asset/bundled');
   config.addWatchTarget('./src/styles');
-
+  
   // hooking up our filters to the config
   addFilters(config);
-
-  // same for styles
-  addStyleProcessor(config);
+  
+  // hooking up build hooks, used for css and social image generation
+  addBuildHook(config);
 
   // config for serverless plugin, used for previews
   config.addPlugin(EleventyServerlessBundlerPlugin, {
@@ -45,6 +46,7 @@ module.exports = function(config) {
     ]
   });
 
+  // return config
   return {
     templateFormats: ['njk'],
     dir: site_config.dir
