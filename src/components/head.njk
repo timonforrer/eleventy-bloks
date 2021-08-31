@@ -1,6 +1,6 @@
 {% set meta_tags = pdata.content.meta_tags[0] %}
 {% set description = meta_tags.description %}
-{% set image = meta_tags.image.filename %}
+{% set image = ('/assets/images/' + social_image.file + '.png') %}
 {% set url = (storyblok_data.domain + page.url) | removeDoubleSlashes %}
 
 {% if title === '' %}
