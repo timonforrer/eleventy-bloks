@@ -1,4 +1,4 @@
-const processCss = require('./assetPipeline/styles.js');
+const processCss = require('../styles');
 
 module.exports = function(config) {
   // only process styles if not inside serverless function
