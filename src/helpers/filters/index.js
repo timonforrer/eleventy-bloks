@@ -2,7 +2,7 @@
 const getYoutubeID = require('./getYoutubeID.js');
 const removeDoubleSlashes = require('./removeDoubleSlashes.js');
 const renderRichText = require('./renderRichText.js');
-const transformDate = require('./transformDate.js')
+const transformDate = require('./transformDate.js');
 
 module.exports = function(config) {
   // expose the filter to the eleventy config

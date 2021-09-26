@@ -13,7 +13,7 @@ const site_config = require('@site_config');
 // getting all filters from single index.js file inside `helpers/filter` folder
 const addFilters = require('./src/helpers/filters');
 
-// getting build hooks e.g. for asset processing (css/social images)
+// getting build hooks e.g. for asset processing (css)
 const addBuildHook = require('./src/helpers/buildHook.js');
 
 module.exports = function(config) {
@@ -28,7 +28,7 @@ module.exports = function(config) {
   // hooking up our filters to the config
   addFilters(config);
   
-  // hooking up build hooks, used for css and social image generation
+  // hooking up build hooks, used for css
   addBuildHook(config);
 
   // config for serverless plugin, used for previews
