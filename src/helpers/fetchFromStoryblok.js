@@ -9,12 +9,14 @@ const fetch = require('node-fetch');
  * Specify which documents should be requested,
  * For documents in other language, prefix the language Code (see Settings > Languages)
  * @param {string} query Language Code + type of content, eg. `en/pages` or `nav`
+ * @param {boolean} getSpace if true, fetches and returns space info
  * @returns {json}
  */
 module.exports = async function(query, getSpace) {
-  const baseURL = !getSpace
-  ? 'https://api.storyblok.com/v2/cdn/stories'
-  : 'https://api.storyblok.com/v2/cdn/spaces/me';
+  const baseURL =
+    getSpace
+    ? 'https://api.storyblok.com/v2/cdn/spaces/me'
+    : 'https://api.storyblok.com/v2/cdn/stories';
 
   // if in serverless environment, use the preview token and set version=draft to get
   // unpublished stories
@@ -23,7 +25,11 @@ module.exports = async function(query, getSpace) {
     ? `${process.env.storyblok_preview}&version=draft`
     : process.env.storyblok_public;
 
-  const url = `${baseURL}?starts_with=${query}&token=${token}`;
+  // if getSpace = true, no starts_with param required
+  const url =
+    getSpace
+    ? `${baseURL}?token=${token}`
+    : `${baseURL}?starts_with=${query}&token=${token}`;
 
   // if in serverless environment, use fresh data, otherwise get cached results
   if (process.env.ELEVENTY_SERVERLESS) {
