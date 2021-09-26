@@ -2,7 +2,6 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import minifyHTML from 'rollup-plugin-minify-html-literals'
 import { terser } from 'rollup-plugin-terser';
 
-
 // get webcomponents and version
 let { webcomponents, version } = require('./site.config.js');
 // turn webcomponents object into array of paths
