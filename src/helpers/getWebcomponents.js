@@ -12,7 +12,7 @@ module.exports = function(page_content) {
   const bloks = [...toplevel_bloks, ...nested_bloks];
 
   // get list of valid webcomponents
-  const webcomponents = Object.keys(site_config.webcomponents);
+  const webcomponents = site_config.webcomponents.map(webcomponent => webcomponent.blok);
 
   // filter out valid blok names based on webcomponent list
   const filtered = bloks.filter(item => webcomponents.includes(item));

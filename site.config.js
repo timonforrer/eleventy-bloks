@@ -5,10 +5,31 @@ version = version.replace(/\./g, '-');
 
 // specify the path of the files, where each webcomponent gets defined (using `customElements.define`)
 // use the tag name of the component as the key
-const webcomponents_paths = {
-  'sp-music-player': '@spartan-components/sp-music-player/sp-music-player.js',
-  'sp-video': '@spartan-components/sp-video/sp-video.js'
-}
+// const webcomponents_paths = {
+//   'sp-music-player': '@spartan-components/sp-music-player/sp-music-player.js',
+//   'sp-video': '@spartan-components/sp-video/sp-video.js'
+// }
+
+const webcomponents = [
+  {
+    name: 'sp-music-player',
+    blok: 'tracks',
+    src: '@spartan-components/sp-music-player/sp-music-player.js'
+  },
+  {
+    name: 'sp-video',
+    blok: 'youtube_video',
+    src: '@spartan-components/sp-video/sp-video.js'
+  }
+]
+
+const scripts = [
+  {
+    name: 'sentry',
+    // load: 'async',
+    src: './src/scripts/sentry'
+  }
+]
 
 module.exports = {
   // eleventy directories
@@ -36,10 +57,13 @@ module.exports = {
   // bloks in storyblok can require a webcomponent to be loaded
   // for each blok, create a configuration object
   // use the storyblock technical name as key, followed by the path of the webcomponent in question
-  webcomponents: {
-    youtube_video: webcomponents_paths['sp-video'],
-    tracks: webcomponents_paths['sp-music-player']
-  },
+  // webcomponents: {
+  //   youtube_video: webcomponents_paths['sp-video'],
+  //   tracks: webcomponents_paths['sp-music-player']
+  // },
+  webcomponents: webcomponents,
+
+  scripts: scripts,
   
   // return the package version for cache busting of assets
   version: version
