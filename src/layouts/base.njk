@@ -7,12 +7,16 @@
 
   <main>{{ content | safe }}</main>
 
+  <button id="breakIt">break it to me</button>
+
   {#
     Lazy loading webcomponents, following lamplightdev.com post
     https://lamplightdev.com/blog/2020/03/20/lazy-loading-web-components-with-intersection-observer/
   #}
   {% if (webcomponents.length > 0) %}
     <script>
+    const btn = document.querySelector('#breakIt');
+    btn.addEventListener('click', () => breakIt());
     // keep a record of the components we've loaded in this way
     const imported = {};
     // Set up our observer:
