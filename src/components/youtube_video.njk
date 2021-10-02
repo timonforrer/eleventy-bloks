@@ -7,7 +7,9 @@
     provider="youtube-nocookie"
     video-id="{{ video_id }}"
   >
-    <img slot="thumbnail" src="{{ 'https://img.youtube.com/vi/' + video_id + '/maxresdefault.jpg' }}" alt="">
+    {% set img_url = ('https://img.youtube.com/vi/' + video_id + '/maxresdefault.jpg') %}
+    {% image src=img_url, alt="", pictureAttributes={ slot: 'thumbnail' } %}
+    {# <img slot="thumbnail" src="{{ img_url }}" alt=""> #}
     <button
       slot="controller"
       class="button uppercase hidden-when-undefined"
