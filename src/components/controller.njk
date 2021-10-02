@@ -9,13 +9,22 @@
 {% endif %}
 
 {# looping over all modular bloks inside `body` #}
-{% for blok in content.body %}
+{% asyncEach blok in content.body %}
   {% set type = blok.component %}
+
   {% if type === 'rich_text' %}
     {{ blok._editable | safe }}
     <section>{{ blok.body | renderRichText | safe }}</section>
-  {% elseif type === 'youtube_video' %}
+  {% endif %}
+
+  {% ifAsync type === 'youtube_video' %}
     {% set youtube_video = blok %}
     {% include 'youtube_video.njk' %}
   {% endif %}
-{% endfor %}
+
+  {% ifAsync type === 'hero_image' %}
+    {% set hero_image = blok %}
+    {% include 'hero_image.njk' %}
+  {% endif %}
+
+{% endeach %}
