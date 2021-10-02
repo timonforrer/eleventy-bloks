@@ -16,6 +16,7 @@ module.exports = async function(params) {
   // `1/1` is a full width image, `1/4` is one fourth of the page width
   // the `(min-width)` media queries might need to be adjusted to fit layout breakpoints
   const sizes = {
+    'full_bleed': '100vw',
     '1/1': '(min-width: 1000px) 95ch, 100vw',
     '1/2': '(min-width: 920px) 50vw, 100vw',
     '1/3': '(min-width: 920px) calc(100vw / 3), (min-width: 600px) 50vw, 100vw',
@@ -71,7 +72,7 @@ module.exports = async function(params) {
               media="${media_query}"
               srcset="${format.url}"
             />`;
-        })}
+        }).join('\n')}
 
         ${generated_images.webp.map(format => {
           const media_query = format.width > 800
@@ -84,7 +85,7 @@ module.exports = async function(params) {
               media="${media_query}"
               srcset="${format.url}"
             />`;
-        })}
+        }).join('\n')}
 
         <img
           src="${generated_images['jpeg'][0].url}"
