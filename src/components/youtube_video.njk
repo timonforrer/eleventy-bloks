@@ -8,7 +8,7 @@
     video-id="{{ video_id }}"
   >
     {% set img_url = ('https://img.youtube.com/vi/' + video_id + '/maxresdefault.jpg') %}
-    {% image src=img_url, alt="", pictureAttributes={ slot: 'thumbnail' } %}
+    {% image src=img_url, preview_src=img_url, alt="", picture_attributes={ slot: 'thumbnail' } %}
     {# <img slot="thumbnail" src="{{ img_url }}" alt=""> #}
     <button
       slot="controller"

@@ -3,5 +3,6 @@ module.exports = function(config) {
   config.addFilter('getYoutubeID', require('./getYoutubeID.js'));
   config.addFilter('removeDoubleSlashes', require('./removeDoubleSlashes.js'));
   config.addFilter('renderRichText', require('./renderRichText.js'));
+  config.addFilter('previewImageUrl', require('./storyblokPreviewImg.js'));
   config.addFilter('transformDate', require('./transformDate.js'));
 }

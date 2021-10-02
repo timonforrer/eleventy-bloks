@@ -1,2 +1,3 @@
-{{ hero_image._editable }}
-{% image src=hero_image.image.filename, alt="" %}
+{{ hero_image._editable | safe }}
+{% set preview_src = (hero_image.image.filename | previewImageUrl) %}
+{% image src=hero_image.image.filename, preview_src=preview_src, alt="" %}
