@@ -10,8 +10,9 @@ alias.addAlias('@site_config', path.join(__dirname, 'site.config.js'));
 // requiring options from @siteConfig
 const site_config = require('@site_config');
 
-// getting all filters from single index.js file inside `helpers/filter` folder
+// getting all filters and shortcodes from respecting index.js files inside `helpers` folder
 const addFilters = require('./src/helpers/filters');
+const addShortcodes= require('./src/helpers/shortcodes');
 // getting build hooks e.g. for asset processing (css)
 const addBuildHook = require('./src/helpers/buildHook.js');
 
@@ -24,8 +25,9 @@ module.exports = function(config) {
   config.addWatchTarget('./src/asset/bundled');
   config.addWatchTarget('./src/styles');
   
-  // hooking up our filters to the config
+  // hooking up filters and shortcodes to the config
   addFilters(config);
+  addShortcodes(config);
   // hooking up build hooks, used for css generation
   addBuildHook(config);
 
