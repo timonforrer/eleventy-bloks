@@ -28,7 +28,7 @@ module.exports = async function(params) {
   // specify options for image generation
   const options = {
     outputDir: 'dist/img/',
-    widths: [800,1200,1600],
+    widths: [800,1200,1600,3200],
     formats: ['avif','webp','jpg']
   }
 
@@ -36,8 +36,7 @@ module.exports = async function(params) {
     return `
       <picture ${renderAttributes(picture_attributes)}>
         <img ${renderAttributes(img_attributes)} src="${preview_src}" />
-      </picture>
-    `
+      </picture>`;
   } else {
     // only require Image function if not in serverless mode
     // otherwise we're exceeding the memory limit
@@ -45,7 +44,7 @@ module.exports = async function(params) {
 
     // generate images and get metadata about it (paths, dimensions etc.)
     let generated_images = await Image(src, options);
-
+    // console.log(generated_images);
     // construct the html
     return `
       <picture
@@ -60,8 +59,33 @@ module.exports = async function(params) {
               sizes="${sizes[size]}"
             />`
         }).join('\n')}
-        <source type="image/avif" srcset="${generated_images['avif'][0].url}" />
-        <source type="image/webp" srcset="${generated_images['webp'][0].url}" />
+        
+        ${generated_images.avif.map(format => {
+          const media_query = format.width > 800
+          ? `(min-width: ${format.width}px)`
+          : '(max-width: 799px)';
+
+          return`
+            <source
+              type="${format.sourceType}"
+              media="${media_query}"
+              srcset="${format.url}"
+            />`;
+        })}
+
+        ${generated_images.webp.map(format => {
+          const media_query = format.width > 800
+          ? `(min-width: ${format.width}px)`
+          : '(max-width: 799px)';
+
+          return`
+            <source
+              type="${format.sourceType}"
+              media="${media_query}"
+              srcset="${format.url}"
+            />`;
+        })}
+
         <img
           src="${generated_images['jpeg'][0].url}"
           width="${generated_images['jpeg'][0].width}"
