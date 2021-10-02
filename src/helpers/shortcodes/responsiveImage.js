@@ -28,7 +28,7 @@ module.exports = async function(params) {
   // specify options for image generation
   const options = {
     outputDir: 'dist/img/',
-    widths: [800,1200,1600,3200],
+    widths: [800,1200,1600,2000],
     formats: ['avif','webp','jpg']
   }
 
