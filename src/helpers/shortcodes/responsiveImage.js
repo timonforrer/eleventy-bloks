@@ -26,6 +26,23 @@ module.exports = async function(params) {
   // alt has to be specified, for decorative images use `alt=""`
   if (alt === undefined) throw new Error(`Alt tag missing on img with src: ${src}`);
 
+  // utility to generate 1x images
+  const generate_sources = (input) => {
+    return input.map((format, index) => {
+      console.log(input.length, index+1);
+      const media_query = (input.length === index + 1)
+      ? `(min-width: ${format.width}px)`
+      : `(max-width: ${format.width}px)`;
+
+      return`
+        <source
+          type="${format.sourceType}"
+          media="${media_query}"
+          srcset="${format.url}"
+        />`;
+    }).join('\n');
+  }
+
   // specify options for image generation
   const options = {
     outputDir: 'dist/img/',
@@ -60,32 +77,9 @@ module.exports = async function(params) {
               sizes="${sizes[size]}"
             />`
         }).join('\n')}
-        
-        ${generated_images.avif.map(format => {
-          const media_query = format.width > 800
-          ? `(min-width: ${format.width}px)`
-          : '(max-width: 799px)';
 
-          return`
-            <source
-              type="${format.sourceType}"
-              media="${media_query}"
-              srcset="${format.url}"
-            />`;
-        }).join('\n')}
-
-        ${generated_images.webp.map(format => {
-          const media_query = format.width > 800
-          ? `(min-width: ${format.width}px)`
-          : '(max-width: 799px)';
-
-          return`
-            <source
-              type="${format.sourceType}"
-              media="${media_query}"
-              srcset="${format.url}"
-            />`;
-        }).join('\n')}
+        ${generate_sources(generated_images.avif)}
+        ${generate_sources(generated_images.webp)}
 
         <img
           src="${generated_images['jpeg'][0].url}"
