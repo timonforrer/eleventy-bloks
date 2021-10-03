@@ -26,23 +26,6 @@ module.exports = async function(params) {
   // alt has to be specified, for decorative images use `alt=""`
   if (alt === undefined) throw new Error(`Alt tag missing on img with src: ${src}`);
 
-  // utility to generate 1x images
-  const generate_sources = (input) => {
-    return input.map((format, index) => {
-      console.log(input.length, index+1);
-      const media_query = (input.length === index + 1)
-      ? `(min-width: ${format.width}px)`
-      : `(max-width: ${format.width}px)`;
-
-      return`
-        <source
-          type="${format.sourceType}"
-          media="${media_query}"
-          srcset="${format.url}"
-        />`;
-    }).join('\n');
-  }
-
   // specify options for image generation
   const options = {
     outputDir: 'dist/img/',
@@ -50,36 +33,32 @@ module.exports = async function(params) {
     formats: ['avif','webp','jpg']
   }
 
+  // check if in serverless environment
   if(process.env.ELEVENTY_SERVERLESS) {
+    // if true, return only minimally optimised image
     return `
       <picture ${renderAttributes(picture_attributes)}>
         <img ${renderAttributes(img_attributes)} src="${preview_src}" />
       </picture>`;
   } else {
-    // only require Image function if not in serverless mode
-    // otherwise we're exceeding the memory limit
+    // else, we can require the Image function
+    // (if loaded in serverless env, we'd be exceeding the memory limit)
     const Image = require("@11ty/eleventy-img");
 
     // generate images and get metadata about it (paths, dimensions etc.)
     let generated_images = await Image(src, options);
-    // console.log(generated_images);
     // construct the html
     return `
-      <picture
-      ${renderAttributes(picture_attributes)}
-      >
+      <picture ${renderAttributes(picture_attributes)}>
         ${Object.values(generated_images).map(format => {
           return`
             <source
               type="${format[0].sourceType}"
-              media="(-webkit-min-device-pixel-ratio: 1.5)"
               srcset="${format.map(sources => sources.srcset).join(', ')}"
               sizes="${sizes[size]}"
-            />`
+            />
+          `;
         }).join('\n')}
-
-        ${generate_sources(generated_images.avif)}
-        ${generate_sources(generated_images.webp)}
 
         <img
           src="${generated_images['jpeg'][0].url}"
