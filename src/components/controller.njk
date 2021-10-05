@@ -8,23 +8,8 @@
   {% include 'tracks.njk' %}
 {% endif %}
 
-{# looping over all modular bloks inside `body` #}
+{# loop over all bloks in `body` #}
 {% asyncEach blok in content.body %}
-  {% set type = blok.component %}
-
-  {% if type === 'rich_text' %}
-    {{ blok._editable | safe }}
-    <section>{{ blok.body | renderRichText | safe }}</section>
-  {% endif %}
-
-  {% ifAsync type === 'youtube_video' %}
-    {% set youtube_video = blok %}
-    {% include 'youtube_video.njk' %}
-  {% endif %}
-
-  {% ifAsync type === 'hero_image' %}
-    {% set hero_image = blok %}
-    {% include 'hero_image.njk' %}
-  {% endif %}
-
+  {# dynamically load components #}
+  {% include (blok.component + '.njk') %}
 {% endeach %}

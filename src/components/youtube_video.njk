@@ -1,6 +1,6 @@
-{% set video_id = youtube_video.url.url | getYoutubeID %}
+{% set video_id = blok.url.url | getYoutubeID %}
 
-{{ youtube_video._editable | safe }}
+{{ blok._editable | safe }}
 <section>
   <sp-video
     class="dynamic-element"
