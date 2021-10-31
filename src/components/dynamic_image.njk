@@ -1,10 +1,6 @@
 {{ blok._editable | safe }}
 {%
   storyblok_image
-  src=blok.image.filename,
-  storyblok_focus=blok.image.focus,
   alt=blok.alt,
-  aspect_phone=blok.aspect_mobile,
-  aspect_tablet=blok.aspect_tablet,
-  aspect_desktop=blok.aspect_desktop
+  storyblok_data=blok
 %}
