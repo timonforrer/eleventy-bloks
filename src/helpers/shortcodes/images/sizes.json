@@ -1,7 +1,0 @@
-{
-  "full_bleed": "100vw",
-  "1/1": "(min-width: 1000px) 95ch, 100vw",
-  "1/2": "(min-width: 920px) 50vw, 100vw",
-  "1/3": "(min-width: 920px) calc(100vw / 3), (min-width: 600px) 50vw, 100vw",
-  "1/4": "(min-width: 920px) 25vw, (min-width: 650px) calc(100vw / 3), (min-width: 440px) 50vw, 100vw"
-}
