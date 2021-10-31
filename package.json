@@ -11,7 +11,7 @@
   "scripts": {
     "clean": "rimraf ./dist ./src/assets/bundled ./src/assets/unbundled ./netlify/functions/dynamic",
     "js": "rollup -c",
-    "dev:eleventy": "npx @11ty/eleventy --watch",
+    "dev:eleventy": "npx @11ty/eleventy --serve",
     "build:eleventy": "npx @11ty/eleventy",
     "dev": "run-s clean js dev:eleventy",
     "build": "run-s clean js build:eleventy"
