@@ -3,17 +3,18 @@ const renderAttributes = require('../../renderAttributes.js');
 // sizes tell the browser which images to load
 // `1/1` is a full width image, `1/4` is one fourth of the page width
 // the `(min-width)` media queries might need to be adjusted to fit layout breakpoints
-const sizes = require('./sizes.json');
+const { sizes } = require('./config.js');
 
 module.exports = async function(params) {
 
   // get shortcode parameters
   const {
-    src,
     alt,
-    size = '1/1',
-    picture_attributes,
     img_attributes,
+    loading = 'lazy',
+    picture_attributes,
+    size = '1/1',
+    src,
     preview_src
   } = params;
 
@@ -33,7 +34,7 @@ module.exports = async function(params) {
     // if true, return only minimally optimised image
     return `
       <picture ${renderAttributes(picture_attributes)}>
-        <img ${renderAttributes(img_attributes)} src="${preview_src}" />
+        <img ${renderAttributes(img_attributes)} src="${preview_src}" loading="${loading}" />
       </picture>`;
 
   } else {
@@ -62,7 +63,7 @@ module.exports = async function(params) {
           src="${generated_images['jpeg'][0].url}"
           width="${generated_images['jpeg'][0].width}"
           height="${generated_images['jpeg'][0].height}"
-          loading="lazy"
+          loading="${loading}"
           decoding="async"
           alt="${alt}"
           ${renderAttributes(img_attributes)}
