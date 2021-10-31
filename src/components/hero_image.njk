@@ -1,3 +1,4 @@
-{{ blok._editable | safe }}
-{% set preview_src = (blok.image.filename | previewImageUrl) %}
-{% image src=blok.image.filename, preview_src=preview_src, alt="", size="full_bleed", loading="eager" %}
+{% preview blok=blok %}
+  {% set preview_src = (blok.image.filename | previewImageUrl) %}
+  {% image src=blok.image.filename, preview_src=preview_src, alt="", size="full_bleed", loading="eager" %}
+{% endpreview %}

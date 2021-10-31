@@ -1,6 +1,7 @@
-{{ blok._editable | safe }}
-{%
-  storyblok_image
-  alt=blok.alt,
-  storyblok_data=blok
-%}
+{% preview blok=blok %}
+  {%
+    storyblok_image
+    alt=blok.alt,
+    storyblok_data=blok
+  %}
+{% endpreview %}
