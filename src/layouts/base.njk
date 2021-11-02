@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="{% if lang %}{{ lang }}{% else %}{{ ('no lang specified for ' + page.inputPath) | log }}{% endif %}">
-{% include 'head.njk' %}
+{% include 'components/head.njk' %}
 <body>
-  {% include 'header.njk' %}
-  {% include 'navigation.njk' %}
+  {% include 'components/header.njk' %}
+  {% include 'components/navigation.njk' %}
 
   <main>{{ content | safe }}</main>
 
@@ -35,8 +35,12 @@
             // instances we don't import twice
             imported[name] = true;
 
+            const paths = {% include "_bundles/_js.json" %}
+
+            console.log(paths);
+
             // Let's load the WC code
-            import(`/assets/{{ version }}/js/${name}.js`);
+            import(paths[name+'.js']);
           }
         }
       });

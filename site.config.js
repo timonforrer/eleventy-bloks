@@ -1,23 +1,11 @@
-// get version from package.json
-let { version } = require('./package.json');
-// replace dots with dashes, so it can be used for folder names
-version = version.replace(/\./g, '-');
-
-// specify the path of the files, where each webcomponent gets defined (using `customElements.define`)
-// use the tag name of the component as the key
-// const webcomponents_paths = {
-//   'sp-music-player': '@spartan-components/sp-music-player/sp-music-player.js',
-//   'sp-video': '@spartan-components/sp-video/sp-video.js'
-// }
-
 const webcomponents = [
   {
-    name: 'sp-music-player',
+    name: 'sp-music-player.js',
     blok: 'tracks',
     src: '@spartan-components/sp-music-player/sp-music-player.js'
   },
   {
-    name: 'sp-video',
+    name: 'sp-video.js',
     blok: 'youtube_video',
     src: '@spartan-components/sp-video/sp-video.js'
   }
@@ -25,7 +13,7 @@ const webcomponents = [
 
 const scripts = [
   {
-    name: 'sentry',
+    name: 'sentry.js',
     // load: 'async',
     src: './src/scripts/sentry'
   }
@@ -36,7 +24,7 @@ module.exports = {
   dir: {
     data: 'data',
     input: 'src',
-    includes: 'components',
+    includes: 'includes',
     layouts: 'layouts',
     output: 'dist'
   },
@@ -54,17 +42,6 @@ module.exports = {
       fetchPrefix: 'en/'
     }
   },
-  // bloks in storyblok can require a webcomponent to be loaded
-  // for each blok, create a configuration object
-  // use the storyblock technical name as key, followed by the path of the webcomponent in question
-  // webcomponents: {
-  //   youtube_video: webcomponents_paths['sp-video'],
-  //   tracks: webcomponents_paths['sp-music-player']
-  // },
   webcomponents: webcomponents,
-
   scripts: scripts,
-  
-  // return the package version for cache busting of assets
-  version: version
 }

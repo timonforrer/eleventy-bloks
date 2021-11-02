@@ -13,16 +13,16 @@ const site_config = require('@site_config');
 // getting all filters and shortcodes from respecting index.js files inside `helpers` folder
 const addFilters = require('./src/helpers/filters');
 const addShortcodes= require('./src/helpers/shortcodes');
+
 // getting build hooks e.g. for asset processing (css)
 const addBuildHook = require('./src/helpers/buildHook.js');
 
 module.exports = function(config) {
 
   // copy over compiled js and css
-  config.addPassthroughCopy({'./src/assets/bundled': 'assets'})
+  config.addPassthroughCopy({'./src/includes/_bundles': 'bundles'});
 
   // watch these files for changes and rebuild site on change
-  config.addWatchTarget('./src/asset/bundled');
   config.addWatchTarget('./src/styles');
   
   // hooking up filters and shortcodes to the config
@@ -37,11 +37,10 @@ module.exports = function(config) {
     inputDir: './src/',
     functionsDir: './netlify/functions',
     copy: [
-      // { from: '.cache', to: 'cache' },
       './site.config.js',
       './src/helpers/',
       './src/pages/',
-      './src/assets/',
+      './src/includes/_bundles/',
       './package.json'
     ]
   });

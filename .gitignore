@@ -8,5 +8,4 @@ netlify/functions/dynamic/**
 !netlify/functions/dynamic/index.js
 _archive
 .DS_Store
-src/assets/bundled
-src/assets/unbundled/**/*.html
+src/includes/_bundles

@@ -9,12 +9,15 @@
     "storybloks"
   ],
   "scripts": {
-    "clean": "rimraf ./dist ./src/assets/bundled ./src/assets/unbundled ./netlify/functions/dynamic",
-    "js": "rollup -c",
+    "clean": "rimraf ./dist ./src/includes/_bundles ./netlify/functions/dynamic",
+    "build:js": "rollup -c",
+    "dev:js": "rollup -c --watch",
     "dev:eleventy": "npx @11ty/eleventy --serve",
+    "debug:eleventy": "DEBUG=Eleventy* npx @11ty/eleventy --serve",
     "build:eleventy": "npx @11ty/eleventy",
-    "dev": "run-s clean js dev:eleventy",
-    "build": "run-s clean js build:eleventy"
+    "debug": "npm-run-all clean --parallel debug:eleventy dev:js",
+    "dev": "npm-run-all clean --parallel dev:*",
+    "build": "npm-run-all clean --parallel build:*"
   },
   "repository": {
     "type": "git",
@@ -46,6 +49,7 @@
     "rollup": "^2.55.1",
     "rollup-plugin-minify-html-literals": "^1.2.6",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-output-manifest": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.38.0",
     "storyblok-js-client": "^4.1.3",
