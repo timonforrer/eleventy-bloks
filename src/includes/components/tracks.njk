@@ -4,8 +4,12 @@
     <ol>
       {% for item in tracks %}
       <li>
+        <p>
         {{ item._editable | safe }}
-        <p>{{ item.title }}</p>
+        {% preview blok=item %}
+          {{ item.title }}
+        {% endpreview %}
+        </p>
         <audio controls src="{{ item.preview.filename }}"></audio>
       </li>
       {% endfor %}

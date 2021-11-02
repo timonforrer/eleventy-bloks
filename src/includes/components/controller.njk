@@ -5,11 +5,11 @@
 {# here go all toplevel bloks (not part of modular `body` blok) #}
 {% if content.tracks %}
   {% set tracks = content.tracks %}
-  {% include 'tracks.njk' %}
+  {% include 'components/tracks.njk' %}
 {% endif %}
 
 {# loop over all bloks in `body` #}
 {% asyncEach blok in content.body %}
   {# dynamically load components #}
-  {% include (blok.component + '.njk') %}
+  {% include ('components/' + blok.component + '.njk') %}
 {% endeach %}
