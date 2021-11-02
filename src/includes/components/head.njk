@@ -12,13 +12,13 @@
     {% set _js %}
       {% include '_bundles/_js.json' %}
     {% endset %}
-    {% set _js = (_js | parseJson) %}
+    {% set _js = (_js | parseJSON) %}
     <script {{ script.load }} src="{{ _js[script.name] }}"></script>
   {% endfor %}
   {% set _css %}
     {% include '_bundles/_css.json' %}
   {% endset %}
-  {% set _css = (_css | parseJson) %}
+  {% set _css = (_css | parseJSON) %}
   <link rel="stylesheet" href="/bundles/{{ _css.filename }}">
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
