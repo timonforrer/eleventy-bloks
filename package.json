@@ -17,7 +17,7 @@
     "debug": "npm-run-all clean --parallel debug:eleventy dev:js",
     "dev:js": "rollup -c --watch",
     "dev": "npm-run-all clean --parallel dev:*",
-    "build": "npm-run-all clean --parallel build:*"
+    "build": "npm-run-all clean build:js build:eleventy"
   },
   "repository": {
     "type": "git",
