@@ -10,12 +10,12 @@
   ],
   "scripts": {
     "clean": "rimraf ./dist ./src/includes/_bundles ./netlify/functions/dynamic",
-    "build:js": "rollup -c",
-    "dev:js": "rollup -c --watch",
-    "dev:eleventy": "npx @11ty/eleventy --serve",
-    "debug:eleventy": "DEBUG=Eleventy* npx @11ty/eleventy --serve",
     "build:eleventy": "npx @11ty/eleventy",
+    "build:js": "rollup -c",
+    "debug:eleventy": "DEBUG=Eleventy* npx @11ty/eleventy --serve",
+    "dev:eleventy": "npx @11ty/eleventy --serve",
     "debug": "npm-run-all clean --parallel debug:eleventy dev:js",
+    "dev:js": "rollup -c --watch",
     "dev": "npm-run-all clean --parallel dev:*",
     "build": "npm-run-all clean --parallel build:*"
   },
