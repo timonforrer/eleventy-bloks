@@ -3,6 +3,6 @@ module.exports = function(config) {
   if (!process.env.ELEVENTY_SERVERLESS) {
     const processCss = require('../styles/index.js');
     // run before build
-    config.on('beforeBuild', () => { processCss() });
+    config.on('beforeBuild', () => processCss());
   }
 }
