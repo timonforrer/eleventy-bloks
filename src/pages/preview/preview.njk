@@ -7,7 +7,9 @@ pagination:
   resolve: values
   serverless: eleventy.serverless.path.splat
 permalink:
-  dynamic: '/preview/(.*)'
+  dynamic:
+    - '/preview/(.*)'
+    - '/preview/(.*)/'
 ---
 
 <details>
