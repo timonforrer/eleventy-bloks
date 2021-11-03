@@ -1,12 +1,13 @@
 ---
 preview: true
-permalink: 'preview-{{ pagination.pageNumber }}.html'
 pagination:
   data: pages
   size: 1
   alias: pdata
   resolve: values
-  serverless: eleventy.serverless.path._
+  serverless: eleventy.serverless.path.splat
+permalink:
+  dynamic: '/preview/(.*)'
 ---
 
 <details>
