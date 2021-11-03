@@ -19,6 +19,8 @@
     {% include '_bundles/_css.json' %}
   {% endset %}
   {% set _css = (_css | parseJSON) %}
+  <script nomudule src="https://polyfill.io/v3/polyfill.min.js?features=es6%2Ces5"></script>
+  <script type="module" src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <link rel="stylesheet" href="/bundles/{{ _css.filename }}">
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
