@@ -36,7 +36,6 @@ module.exports = function(config) {
     name: 'dynamic',
     inputDir: './src/',
     functionsDir: './netlify/functions',
-    redirects: false,
     copy: [
       './site.config.js',
       './src/helpers/',

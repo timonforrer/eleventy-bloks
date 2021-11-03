@@ -9,7 +9,7 @@ port = 3_000
 publish = "dist"
 
 [[redirects]]
-from = "/preview/*"
+from = "/preview/:slug(.*)"
 to = "/.netlify/functions/dynamic"
 status = 200
 force = true
