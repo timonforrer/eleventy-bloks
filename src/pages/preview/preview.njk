@@ -5,12 +5,12 @@ pagination:
   size: 1
   alias: pdata
   resolve: values
-  serverless: eleventy.serverless.slug
+  serverless: eleventy.serverless.path[0]
 permalink:
-  dynamic: '/preview/:slug(.*)'
+  dynamic: '/preview/(.*)'
 ---
 
-{{ eleventy.serverless.path | dump(2) }}
+{{ eleventy.serverless.path[0] | dump(2) }}
 
 <details>
   <summary>Show code</summary>
