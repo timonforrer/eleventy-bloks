@@ -9,5 +9,3 @@ netlify/functions/dynamic/**
 _archive
 .DS_Store
 src/includes/_bundles
-src/webcomponents/spartan-test
-src/webcomponents/sportan-test
