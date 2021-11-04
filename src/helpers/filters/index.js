@@ -6,4 +6,5 @@ module.exports = function(config) {
   config.addFilter('renderRichText', require('./renderRichText.js'));
   config.addFilter('previewImageUrl', require('./storyblokPreviewImg.js'));
   config.addFilter('transformDate', require('./transformDate.js'));
+  config.addFilter('typeof', require('./typeof.js'));
 }

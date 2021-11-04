@@ -14,7 +14,16 @@
       {% include '_bundles/_js.json' %}
     {% endset %}
     {% set _js = (_js | parseJSON) %}
-    <script {{ script.load }} src="{{ _js[script.name] }}"></script>
+    <script
+      {% for attribute in script.attributes %}
+        {% if ((attribute|typeof) === 'string') %}
+        {{ attribute }}
+        {% else %}
+          {{ attribute.key }}="{{ attribute.value }}"
+        {% endif %}
+      {% endfor %}
+      src="{{ _js[script.name] }}"
+    ></script>
   {% endfor %}
   {% set _css %}
     {% include '_bundles/_css.json' %}

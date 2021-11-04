@@ -17,7 +17,19 @@ const webcomponents = [
 ]
 
 
-const scripts = []
+const scripts = [
+  {
+    attributes: [
+      'defer',
+      {
+        key: 'type',
+        value: 'module'
+      }
+    ],
+    name: 'quicklink.modern.js',
+    src: 'quicklink/dist/quicklink.modern.js'
+  }
+]
 
 module.exports = {
   // eleventy directories
