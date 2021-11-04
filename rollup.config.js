@@ -27,5 +27,8 @@ export default {
       fileName: '_js.json',
       publicPath: '/bundles/'
     })
-  ]
+  ],
+  watch: {
+    include: '.site.config.js'
+  }
 }
