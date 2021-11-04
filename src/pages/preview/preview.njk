@@ -10,12 +10,12 @@ permalink:
   dynamic: '/preview/(.*)'
 ---
 
-{{ eleventy.serverless.path[0] | dump(2) }}
-
+{% if false %}
 <details>
   <summary>Show code</summary>
   <pre>
     {{ pdata | dump(2) }}
   </pre>
 </details>
+{% endif %}
 {% include 'components/controller.njk' %}

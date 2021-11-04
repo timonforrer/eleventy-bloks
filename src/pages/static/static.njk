@@ -8,10 +8,12 @@ pagination:
   addAllPagesToCollections: true
 ---
 
+{% if false %}
 <details>
   <summary>Show code</summary>
   <pre>
     {{ pdata | dump(2) }}
   </pre>
 </details>
+{% endif %}
 {% include 'components/controller.njk' %}
