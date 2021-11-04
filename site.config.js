@@ -16,13 +16,8 @@ const webcomponents = [
   }
 ]
 
-const scripts = [
-  {
-    name: 'sentry.js',
-    // load: 'async',
-    src: './src/scripts/sentry'
-  }
-]
+
+const scripts = []
 
 module.exports = {
   // eleventy directories
