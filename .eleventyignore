@@ -1,0 +1,7 @@
+# Local Netlify folder
+.netlify
+node_modules
+dist
+.cache
+./src/includes/_bundles/*.css
+./src/includes/_bundles/_css.json

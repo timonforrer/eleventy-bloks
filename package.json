@@ -57,6 +57,7 @@
   "dependencies": {
     "@11ty/eleventy-cache-assets": "^2.3.0",
     "@sentry/browser": "^6.13.2",
-    "@sentry/tracing": "^6.13.2"
+    "@sentry/tracing": "^6.13.2",
+    "lit": "^2.0.2"
   }
 }

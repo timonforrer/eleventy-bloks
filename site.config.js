@@ -8,6 +8,11 @@ const webcomponents = [
     name: 'sp-video.js',
     blok: 'youtube_video',
     src: '@spartan-components/sp-video/sp-video.js'
+  },
+  {
+    name: 'spartan-test.js',
+    blok: 'rich_text',
+    src: './src/webcomponents/spartan-test/spartan-test.js'
   }
 ]
 

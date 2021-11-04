@@ -23,7 +23,9 @@ module.exports = function(config) {
   config.addPassthroughCopy({'./src/includes/_bundles': 'bundles'});
 
   // watch these files for changes and rebuild site on change
-  config.addWatchTarget('./src/styles');
+  config.addWatchTarget('./src/styles/');
+
+  config.setUseGitIgnore(false);
   
   // hooking up filters and shortcodes to the config
   addFilters(config);
