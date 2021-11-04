@@ -13,6 +13,7 @@ const site_config = require('@site_config');
 // getting all filters and shortcodes from respecting index.js files inside `helpers` folder
 const addFilters = require('./src/helpers/filters');
 const addShortcodes= require('./src/helpers/shortcodes');
+const addTransforms= require('./src/helpers/transforms');
 
 // getting build hooks e.g. for asset processing (css)
 const addBuildHook = require('./src/helpers/buildHook.js');
@@ -30,6 +31,7 @@ module.exports = function(config) {
   // hooking up filters and shortcodes to the config
   addFilters(config);
   addShortcodes(config);
+  addTransforms(config);
   // hooking up build hooks, used for css generation
   addBuildHook(config);
 
