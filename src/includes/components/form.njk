@@ -1,0 +1,59 @@
+<sp-form class="dynamic-element">
+  <form action="">
+
+    {% for fieldset in blok.fieldsets %}
+    <fieldset>
+      {% if fieldset.title %}
+        <legend>{{ fieldset.title }}</legend>
+      {% endif %}
+      {% for input in fieldset.inputs %}
+        <sp-input-group class="{{ input.width }}">
+
+          {% set config = input.field[0] %}
+          {% set identifier = ( input.name | slugify ) %}
+
+          <label for="{{ identifier }}">{{ input.name }}</label>
+
+          {% if config.component === 'textarea' %}
+
+            <textarea
+              name="{{ identifier }}"
+              id="{{ identifier }}"
+              cols="{{ config.cols }}"
+              rows="{{ config.rows }}"
+              {% if input.required %} required {% endif %}
+              ></textarea>
+
+          {% else %}
+
+            {% set type = '' %}
+
+            {% if config.component === 'number' %}
+              {% set type = 'number' %}
+            {% else %}
+              {% set type = config.type %}
+            {% endif %}
+
+            <input
+              type="{{ type }}"
+              id="{{ identifier }}"
+              {% if type === 'number' %}
+              min="{{ config.min }}"
+              min="{{ config.max }}"
+              {% endif %}
+              {% if input.required %} required {% endif %}
+            >
+
+          {% endif %}
+
+        </sp-input-group>
+
+      {% endfor %}
+
+    </fieldset>
+
+    {% endfor %}
+
+    <button type="submit">Submit</button>
+  </form>
+</sp-form>

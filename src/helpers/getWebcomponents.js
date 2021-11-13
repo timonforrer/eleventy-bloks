@@ -2,6 +2,9 @@
 const site_config = require('@site_config');
 
 module.exports = function(page_content) {
+  // get page type
+  const page_type = page_content.component;
+
   // get all toplevel blok names (directly inside content of a story)
   const toplevel_bloks = Object.keys(page_content);
 
@@ -9,7 +12,7 @@ module.exports = function(page_content) {
   const nested_bloks = page_content.body.map(item => item.component);
 
   // merge blok names
-  const bloks = [...toplevel_bloks, ...nested_bloks];
+  const bloks = [page_type, ...toplevel_bloks, ...nested_bloks];
 
   // get list of valid webcomponents
   const webcomponents = site_config.webcomponents.map(webcomponent => webcomponent.blok);

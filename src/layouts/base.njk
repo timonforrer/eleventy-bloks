@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="{% if lang %}{{ lang }}{% else %}{{ ('no lang specified for ' + page.inputPath) | log }}{% endif %}">
 {% include 'components/head.njk' %}
-<body>
+<body class="no-wc">
   {% include 'components/header.njk' %}
   {% include 'components/navigation.njk' %}
 
   <main>{{ content | safe }}</main>
 
+  <script>
+    if (window.customElements) document.querySelector('body').classList.remove('no-wc');
+  </script>
   {#
     Lazy loading webcomponents, following lamplightdev.com post
     https://lamplightdev.com/blog/2020/03/20/lazy-loading-web-components-with-intersection-observer/

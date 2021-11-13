@@ -34,6 +34,7 @@
     "@11ty/eleventy-img": "^0.10.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@spartan-components/base-styles": "^0.0.2",
+    "@spartan-components/sp-form": "^0.0.2",
     "@spartan-components/sp-music-player": "^0.0.2",
     "@spartan-components/sp-video": "^0.0.8",
     "@sporkbytes/storyblok-image": "^0.1.0",

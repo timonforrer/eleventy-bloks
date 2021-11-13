@@ -9,10 +9,15 @@ const webcomponents = [
     blok: 'youtube_video',
     src: '@spartan-components/sp-video/sp-video.js'
   },
+  // {
+  //   name: 'spartan-test.js',
+  //   blok: 'rich_text',
+  //   src: './src/webcomponents/spartan-test/spartan-test.js'
+  // },
   {
-    name: 'spartan-test.js',
-    blok: 'rich_text',
-    src: './src/webcomponents/spartan-test/spartan-test.js'
+    name: 'sp-form.js',
+    blok: 'form',
+    src: '@spartan-components/sp-form/sp-form.js'
   }
 ]
 
