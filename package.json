@@ -17,7 +17,7 @@
     "dev:eleventy": "npx @11ty/eleventy --serve",
     "dev:js": "rollup -c --watch",
     "dev": "FORCE_COLOR=True netlify dev:exec npm-run-all clean --parallel dev:*",
-    "build": "npm-run-all clean build:js build:eleventy"
+    "build": "npm-run-all clean --parallel build:*"
   },
   "repository": {
     "type": "git",

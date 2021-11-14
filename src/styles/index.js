@@ -10,6 +10,10 @@ const fs = require('fs-extra');
 
 module.exports = function() {
 
+  if(!fs.existsSync('src/includes/_bundles')) {
+    fs.mkdirSync('src/includes/_bundles/');
+  }
+
   const processCss = () => {
 
     let result = sass.renderSync({
