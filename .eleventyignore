@@ -5,3 +5,5 @@ dist
 .cache
 ./src/includes/_bundles/*.css
 ./src/includes/_bundles/_css.json
+netlify/functions/dynamic/**
+!netlify/functions/dynamic/index.js
