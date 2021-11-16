@@ -9,7 +9,14 @@ port = 3_000
 publish = "dist"
 
 [[redirects]]
-from = "/preview/*"
+from = "/preview/(.*)"
+to = "/.netlify/functions/dynamic"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "dynamic"
+
+[[redirects]]
+from = "/forms/:lang/:id/:name"
 to = "/.netlify/functions/dynamic"
 status = 200
 force = true
