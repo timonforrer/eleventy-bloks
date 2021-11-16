@@ -1,7 +1,7 @@
 <sp-form class="dynamic-element">
   <form action="">
 
-    {% for fieldset in blok.fieldsets %}
+    {% for fieldset in pdata.content.form %}
     <fieldset>
       {% if fieldset.title %}
         <legend>{{ fieldset.title }}</legend>

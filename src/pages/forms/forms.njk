@@ -1,0 +1,25 @@
+---
+pagination:
+  data: forms
+  size: 1
+  alias: pdata
+  resolve: values
+  serverless: "{{ eleventy.serverless.path.lang }}/{{ eleventy.serverless.path.id }}"
+permalink:
+  dynamic: '/forms/:lang/:id'
+---
+
+{% if true %}
+<details>
+  <summary>Show code</summary>
+  <pre>
+    {{ pdata | dump(2) }}
+  </pre>
+</details>
+{% endif %}
+
+{% include 'components/form.njk' %}
+
+{# {{ pdata | dump(2) }} #}
+
+{# {% include 'components/controller.njk' %} #}
